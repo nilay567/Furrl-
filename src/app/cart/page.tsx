@@ -18,7 +18,7 @@ interface Review {
     const [index, setIndex] = useState<number>(0);
     const [isAnimating, setIsAnimating] = useState<boolean>(false);
   
-    const authToken: string | null = localStorage.getItem('token');
+    const authToken: string | null = process.env.NEXT_PUBLIC_API_KEY ?? null;
     const cartItems = async () => {
         try {
 

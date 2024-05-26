@@ -6,7 +6,7 @@ import axios from "axios";
 import WishItems from "@/components/WishItems";
 const Wishlist: React.FC = () => {
     const [items, setItems] = useState<any[]>([]);
-    const authToken: string | null = localStorage.getItem('token');
+    const authToken: string | null = process.env.NEXT_PUBLIC_API_KEY ?? null;
     
     const wishItems = async () => {
         try {

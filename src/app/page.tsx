@@ -32,13 +32,8 @@ interface Item {
 
 const Home: React.FC = () => {
   
-  useEffect(() => {
-    const token = process.env.NEXT_PUBLIC_API_KEY;
-    if (token) {
-        localStorage.setItem('token', token);
-    }
-}, []);
-  const authToken: string | null = localStorage.getItem('token');
+
+const authToken: string | null = process.env.NEXT_PUBLIC_API_KEY ?? null;
 
 
   const [items, setItems] = useState<Item[]>([]);
