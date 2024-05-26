@@ -11,7 +11,7 @@ interface Review {
     place: string;
   }
   
-  const cart: React.FC = () => {
+  const Cart: React.FC = () => {
     const [items, setItems] = useState<any[]>([]);
     const [reviews, setReviews] = useState<Review[]>([]);
     const [price, setPrice] = useState<any>(null);
@@ -158,4 +158,4 @@ interface Review {
 
 }
 
-export default cart;
+export default Cart;

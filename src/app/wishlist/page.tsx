@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import WishItems from "@/components/WishItems";
-const wishlist: React.FC = () => {
+const Wishlist: React.FC = () => {
     const [items, setItems] = useState<any[]>([]);
     const authToken: string | null = localStorage.getItem('token');
     
@@ -54,4 +54,4 @@ const wishlist: React.FC = () => {
 
 }
 
-export default wishlist;
+export default Wishlist;
