@@ -4,16 +4,44 @@ import axios from "axios";
 import Items from "@/components/Items";
 import Loading from "@/components/Loading";
 
+interface Item {
+  id: string;
+  shopifyId: number;
+  title: string;
+  MRP: {
+      currency: string;
+      value: number;
+  };
+  price: {
+      value: number;
+      currency: string;
+  };
+  brand: {
+      id: string;
+      name: string;
+  }[];
+  discountPercent: number;
+  images: {
+      id: number;
+      position: number;
+      width: number;
+      height: number;
+      src: string;
+  }[];
+}
+
 const Home: React.FC = () => {
   
   useEffect(() => {
-    const token= process.env.NEXT_PUBLIC_API_KEY;
-    localStorage.setItem('token', token);
-  }, []);
+    const token = process.env.NEXT_PUBLIC_API_KEY;
+    if (token) {
+        localStorage.setItem('token', token);
+    }
+}, []);
   const authToken: string | null = localStorage.getItem('token');
 
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<Item[]>([]);
   const [page, setPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
   const [totalPages, setTotalPages] = useState<number>(170);

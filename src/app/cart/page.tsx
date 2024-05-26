@@ -48,7 +48,7 @@ interface Review {
         // console.log(items)
     }, [])
 
-   const change=(idx)=>{
+   const change=(idx: number)=>{
            setIndex(idx);
            console.log(`${idx} is clicked`)
    }

@@ -1,7 +1,8 @@
+// Items.tsx
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
-import Share from "./Share";
+import Share from "@/components/Share";
 
 interface Item {
   id: string;
@@ -22,9 +23,11 @@ const Items: React.FC<Props> = ({ items }) => {
   const [share, setShare] = useState(false);
   const [id, setId] = useState<string | null>(null);
 
-  const toggleShare = (itemId: string) => {
+  const toggleShare = (itemId?: string) => { // Optional parameter
     setShare(!share);
-    setId(itemId);
+    if (itemId) {
+      setId(itemId);
+    }
   };
 
   return (
@@ -73,13 +76,13 @@ const Items: React.FC<Props> = ({ items }) => {
                 >
                   <img src="/share.svg" alt="Share Icon" />
                 </button>
-                {share && <Share toggleShare={toggleShare} id={id} />}
+                {share && <Share toggleShare={() => toggleShare()} id={id} />} {/* Pass function without arguments */}
               </div>
             </CardFooter>
           </Card>
         ))
       ) : (
-        <div>no image</div>
+        <div>No items available</div>
       )}
     </>
   );
